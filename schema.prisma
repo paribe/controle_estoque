@@ -1,0 +1,22 @@
+
+generator client {
+  provider = "prisma-client-py"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./estoque.db"
+}
+
+model Produto {
+  id            Int      @id @default(autoincrement())
+  nome          String
+  descricao     String?
+  categoria     String
+  preco         Float
+  quantidade    Int
+  estoqueMinimo Int
+  ativo         Boolean  @default(true)
+  criadoEm      DateTime @default(now())
+  atualizadoEm  DateTime @updatedAt
+}
